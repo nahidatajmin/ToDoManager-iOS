@@ -1,0 +1,21 @@
+//
+//  Model.swift
+//  ToDoManager-iOS
+//
+//  Created by Kazi Tanjim Shakib on 6/10/24.
+//
+
+import SwiftData
+import SwiftUI
+
+@Model
+class ToDo {
+   // @Attribute(.unique) var id: String = UUID().uuidString
+    var name: String
+    var note: String
+    
+    init(name: String, note: String) {
+        self.name = name
+        self.note = note
+    }
+}
