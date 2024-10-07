@@ -27,7 +27,7 @@ struct ContentView: View {
                     }
                 }.onDelete(perform: deleteTodo)
             }.navigationDestination(for: ToDo.self) { todolist in
-                ToDoDetailsScreen()
+                ToDoDetailsScreen(todo: todolist)
             }
         }.navigationTitle("ToDo Lists")
             .toolbar {
