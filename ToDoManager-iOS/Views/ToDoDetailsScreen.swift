@@ -10,6 +10,7 @@ import SwiftUI
 
 struct ToDoDetailsScreen: View {
     let todo: ToDo
+    
     @Environment(\.modelContext) private var context
     
     @State private var title: String = ""
@@ -43,18 +44,20 @@ struct ToDoDetailsScreen: View {
                 updateTodoItem()
             }.disabled(!shouldEnableUpdateButton())
             
-            Section {
-                HStack {
-                    Spacer()
-                    Button {
-                        print("button tapped")
-                        shouldAddCheckListPresent = true
-                        //shouldAddCheckListPresent = true
-                        // AddCheckList()
-                    } label: {
-                        Image(systemName: "plus")
-                    }
+            Section("Checklist of this task") {
+                Button {
+                    shouldAddCheckListPresent = true
+                } label: {
+                    Image(systemName: "plus")
+                        .frame(maxWidth: .infinity, alignment: .trailing)
                 }
+                
+                if todo.checkList.isEmpty {
+                    ContentUnavailableView("No Checklists so far", systemImage: "trash.fill")
+                } else {
+                    ShowCheckList(todo: todo)
+                }
+                
             }
         }.onAppear {
             title = todo.name
@@ -62,7 +65,7 @@ struct ToDoDetailsScreen: View {
         }
         .sheet(isPresented: $shouldAddCheckListPresent) {
             NavigationStack {
-                AddCheckList()
+                AddCheckList(todo: todo)
             }
         }
     }

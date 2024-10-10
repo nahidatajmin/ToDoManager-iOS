@@ -13,6 +13,7 @@ class ToDo {
    // @Attribute(.unique) var id: String = UUID().uuidString
     var name: String
     var note: String
+    
     @Relationship(deleteRule: .cascade) var checkList: [CheckList] = []
     
     init(name: String, note: String) {

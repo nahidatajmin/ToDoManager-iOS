@@ -9,6 +9,7 @@ import SwiftData
 import SwiftUI
 
 struct ContentView: View {
+    
     @Environment(\.modelContext) private var context
     @Query(sort: \ToDo.name, order: .forward) var allToDoLists: [ToDo]
     
