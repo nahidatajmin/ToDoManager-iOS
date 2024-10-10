@@ -14,6 +14,7 @@ struct ToDoDetailsScreen: View {
     
     @State private var title: String = ""
     @State private var description: String = ""
+    @State private var shouldAddCheckListPresent: Bool = false
     
     private func shouldEnableUpdateButton() -> Bool {
         if todo.name != title || todo.note != description {
@@ -41,9 +42,28 @@ struct ToDoDetailsScreen: View {
             Button("Update") {
                 updateTodoItem()
             }.disabled(!shouldEnableUpdateButton())
+            
+            Section {
+                HStack {
+                    Spacer()
+                    Button {
+                        print("button tapped")
+                        shouldAddCheckListPresent = true
+                        //shouldAddCheckListPresent = true
+                        // AddCheckList()
+                    } label: {
+                        Image(systemName: "plus")
+                    }
+                }
+            }
         }.onAppear {
             title = todo.name
             description = todo.note
+        }
+        .sheet(isPresented: $shouldAddCheckListPresent) {
+            NavigationStack {
+                AddCheckList()
+            }
         }
     }
 }

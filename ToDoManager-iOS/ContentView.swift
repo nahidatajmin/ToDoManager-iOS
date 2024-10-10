@@ -33,12 +33,11 @@ struct ContentView: View {
             .toolbar {
                 Button("add samples") {
                     isAddTodoItemPresented = true
-                    //addSamples()
                 }
             }.sheet(isPresented: $isAddTodoItemPresented, content: {
                 NavigationStack {
                     AddToDoItem()
-                }.presentationDetents([.medium, .large])
+                }.presentationDetents([.large])
             })
     }
     
