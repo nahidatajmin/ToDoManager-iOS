@@ -48,8 +48,7 @@ Here, `\ToDO.name` indicates the sorting criteria and `order: .forward` denotes 
 To delete a particular entry SwiftData provides `delete` function.
 
 
-![Simulator Screen Recording - iPhone 16 - 2024-10-14 at 23 43 39](https://github.com/user-attachments/assets/d3eb621b-791f-41ae-a2b7-a413c799d493)
-
+<img width="200" src="![Simulator Screen Recording - iPhone 16 - 2024-10-14 at 23 43 39](https://github.com/user-attachments/assets/d3eb621b-791f-41ae-a2b7-a413c799d493)">
 
 
 
