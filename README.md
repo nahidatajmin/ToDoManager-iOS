@@ -7,6 +7,7 @@ SwiftData keeps data synced with iCloud storage.
 # App Simulation
 
 
+
 https://github.com/user-attachments/assets/a9b78fa1-1cb5-488c-9f9b-1a7a6cbbc02d
 
 ## How SwiftData is used to persist user Data.
@@ -48,8 +49,10 @@ Here, `\ToDO.name` indicates the sorting criteria and `order: .forward` denotes 
 To delete a particular entry SwiftData provides `delete` function.
 
 
-<img width="200" src="![Simulator Screen Recording - iPhone 16 - 2024-10-14 at 23 43 39](https://github.com/user-attachments/assets/d3eb621b-791f-41ae-a2b7-a413c799d493)">
 
+<p align="center">
+  <img width="250" height="450" src="https://github.com/user-attachments/assets/e4614cfa-3615-400f-ba25-e20d28c0e8c2">
+</p>
 
 
 
