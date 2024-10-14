@@ -39,5 +39,62 @@ To get the data and to show them in UI, `@Query` macro is used and it's default 
 @Environment(\.modelContext) private var context
 @Query(sort: \ToDo.name, order: .forward) var allToDoLists: [ToDo]
 ```
+In order to get the sorted order `SwiftData` provides a particular syntax.
+```Swift
+sort: \ToDo.name,  order: .forward
+```
+Here, `\ToDO.name` indicates the sorting criteria and `order: .forward` denotes the sorting order i.e ascending or descending.
+
+To delete a particualar entry SwiftData provides `delete` function.
+
+```Swift
+    @Environment(\.modelContext) private var context
+    @Query(sort: \ToDo.name, order: .forward) var allToDoLists: [ToDo]
+    
+    @State private var isAddTodoItemPresented: Bool = false
+    
+    var body: some View {
+        NavigationStack {
+            List {
+                ForEach(allToDoLists) { list in
+                    NavigationLink(value: list) {
+                        HStack {
+                            Text("\(list.name)")
+                            Spacer()
+                            Text("\(list.note)")
+                        }
+                    }
+                }.onDelete(perform: deleteTodo)
+            }.navigationDestination(for: ToDo.self) { todolist in
+                ToDoDetailsScreen(todo: todolist)
+            }
+        }.navigationTitle("ToDo Lists")
+            .toolbar {
+                Button("add samples") {
+                    isAddTodoItemPresented = true
+                }
+            }.sheet(isPresented: $isAddTodoItemPresented, content: {
+                NavigationStack {
+                    AddToDoItem()
+                }.presentationDetents([.large])
+            })
+    }
+
+   private func deleteTodo(indexSet: IndexSet) {
+        indexSet.forEach { index in
+            let TodoItem = allToDoLists[index]
+            context.delete(TodoItem)
+            do {
+                try context.save()
+            } catch {
+                print(error.localizedDescription)
+            }
+        }
+    }
+```
+
+Here `try catch` block is not mandatory. `Context.delete` method is enough to do the deletion process for SwiftData.
+Though it is a good practice to catch the error and print the log for debugging purposes.
+
 
 
