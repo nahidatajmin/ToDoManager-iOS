@@ -45,7 +45,13 @@ sort: \ToDo.name,  order: .forward
 ```
 Here, `\ToDO.name` indicates the sorting criteria and `order: .forward` denotes the sorting order i.e ascending or descending.
 
-To delete a particualar entry SwiftData provides `delete` function.
+To delete a particular entry SwiftData provides `delete` function.
+
+
+<img width="370" alt="Screenshot 2024-10-14 at 11 41 23 PM" src="https://github.com/user-attachments/assets/e052c6ff-768f-4d4b-b49b-7fe5fd4eaffa">
+
+
+
 
 ```Swift
     @Environment(\.modelContext) private var context
